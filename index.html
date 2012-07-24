@@ -1,0 +1,79 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8" />
+	<style>
+		body {
+			background-color: hsl(0, 100%, 50%);
+			background-image: url(stacked_circles.png);
+			margin:0;
+			font-family:"Georgia", serif;
+			-webkit-animation: goMadness 1s alternate infinite;
+		}
+		.animated {
+			-webkit-animation: goMadness 1s alternate infinite;
+		}
+		@-webkit-keyframes goMadness {
+		    100% {}
+		} 
+
+		#madnesssss {
+			font-size:1300%;
+			visibility:hidden;
+			text-shadow: 22px 0px 0px rgba(0, 0, 0, 0.6),
+						 -22px 0px rgba(0, 0, 0, 0.6),
+						 0px -22px 0px rgba(0, 0, 0, 0.6),
+						 0px 22px 0px rgba(0, 0, 0, 0.6);
+		}
+		label {
+			font-size:50px;
+		}
+		#controls {
+			position:absolute;
+			bottom:0;
+			left:0;
+			font-weight:bold;
+		}
+		#changeSpeed { width:300px; }
+	</style>
+	<script>
+		window.onload = function() {
+			function setup() {  
+			    var b = document.body,
+			    	madness = document.getElementById('madnesssss'),
+			    	changeSpeed = document.getElementById('changeSpeed'),
+			    	animationListener = function(e) {
+			    		b.style.backgroundColor = 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)';
+			    		madness.style.color = 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)';
+			    	},
+			    	originalSpeed = 1,
+			    	rangeListener = function(e) {
+			    		var target = e.target;
+			    		b.style.webkitAnimationName = "";
+			    		madness.style.visibility = (target.value > 20) ? 'visible' : 'hidden';
+
+			    		setTimeout(function ()
+						{
+						    b.style.webkitAnimationName = "goMadness";
+						    b.style.webkitAnimationDuration = '' + originalSpeed/target.value + 's';
+						}, 0);
+			    	};
+
+			    b.addEventListener("oAnimationIteration", animationListener, false);
+			    b.addEventListener("webkitAnimationIteration", animationListener, false);
+			    b.addEventListener("animationIteration", animationListener, false);
+
+			    //b.className = 'animated';
+
+			    changeSpeed.addEventListener('change', rangeListener, false);
+			} 
+			setup();
+		};
+	</script>
+</head>
+<body>
+	<div id="madnesssss">This is madnesssssssss!!!!!! aaaaaaaahhhhhhhh</div>
+	<div id="controls">
+		<label for="changeSpeed">Go crazy:</label><input type="range" id="changeSpeed" name="changeSpeed" min="1" max="50" value="1" />
+	</div>
+</body>
+
