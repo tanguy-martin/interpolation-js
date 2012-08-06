@@ -1,0 +1,37 @@
+body {
+	background-color: hsl(0, 100%, 50%);
+	background-image: url(stacked_circles.png);
+	margin: 0;
+	font-family: arial, sans-serif;
+	text-transform: uppercase;
+	-webkit-animation: goMadness 1s alternate infinite;
+    -moz-animation: goMadness 1s alternate infinite; 
+    -o-animation: goMadness 1s alternate infinite; 
+    -ms-animation: goMadness 1s alternate infinite; 
+    animation: goMadness 1s alternate infinite; 
+}
+@-webkit-keyframes goMadness {
+    100% {}
+} 
+@-moz-keyframes goMadness {
+    100% { color: #000; }
+} 
+@-o-keyframes goMadness {
+    100% { color: #000; }
+} 
+@-ms-keyframes goMadness {
+    100% {}
+} 
+@keyframes goMadness {
+    100% { color: #000; }
+} 
+label {
+	font-size: 50px;
+}
+#controls {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-weight: bold;
+}
+#changeSpeed { width: 300px; }
