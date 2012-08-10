@@ -1,10 +1,11 @@
+html, body {
+    height: 100%;
+}
 body {
 	background-color: hsl(0, 100%, 50%);
-	background-image: url(stacked_circles.png);
 	margin: 0;
 	font-family: arial, sans-serif;
 	text-transform: uppercase;
-	position: fixed; top: 50px; left: 50px;
 	-webkit-animation: goMadness 1s alternate infinite;
     -moz-animation: goMadness 1s alternate infinite; 
     -o-animation: goMadness 1s alternate infinite; 
@@ -88,3 +89,11 @@ label {
     	transform: scale(2) rotate(2turn);  
     }
 } 
+.author {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+a {
+    color: #333;
+}
