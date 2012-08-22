@@ -6,11 +6,11 @@ body {
 	margin: 0;
 	font-family: arial, sans-serif;
 	text-transform: uppercase;
-	-webkit-animation: goMadness 1s alternate infinite;
-    -moz-animation: goMadness 1s alternate infinite; 
-    -o-animation: goMadness 1s alternate infinite; 
-    -ms-animation: goMadness 1s alternate infinite; 
-    animation: goMadness 1s alternate infinite; 
+	-webkit-animation: goMadness 1s ease-out infinite;
+    -moz-animation: goMadness 1s ease-out infinite; 
+    -o-animation: goMadness 1s ease-out infinite; 
+    -ms-animation: goMadness 1s ease-out infinite; 
+    animation: goMadness 1s ease-out infinite; 
 }
 @-webkit-keyframes goMadness {
     100% {}
