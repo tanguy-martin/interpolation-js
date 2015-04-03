@@ -1,21 +1,17 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8" />
-	<title>Crazy colors</title>
+	<title>Linear interpolation</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script data-main="js/app" src="js/lib/require.min.js"></script>
 </head>
 <body>
-	<div id="controls">
-		<label for="changeSpeed">Crazy colors</label><br />
-		<input type="range" id="changeSpeed" name="changeSpeed" min="1" max="50" value="1" />
-	</div>
-	<p>
-		I think this works on Chrome/Safari (webkit) only...
-	</p>
-	<div id="whoow">Whoooooow !!!!</div>
-	<img src="images/whoow.gif" id="whoow-image"/>
-	<div class="author">This is useless and had been made by <a href="http://tanguymartin.com">Tanguy</a> | <a href="https://github.com/tanguy-martin/crazycolors">Github repo</a></div>
-	<script src="lib/html5slider.js"></script>
-	<script src="js/script.js"></script>
+    <canvas id="viewport" width="1200" height="800"></canvas>
+    <div class="page">
+        <h1>Playing with linear interpolation</h1>
+        <label for="toggleInterpolation">Toggle interpolation: </label>
+        <button id="toggleInterpolation" class="btn">Interpolation OFF</button>
+        <p>Now draw (click & drag).</p>
+    </div>
 </body>
 
