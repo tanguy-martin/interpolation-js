@@ -1,4 +1,4 @@
-= Interpolation JS
+# Interpolation JS
 
 *Playing with interpolation (linear) in JavaScript.*
 
