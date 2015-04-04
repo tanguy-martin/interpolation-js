@@ -2,15 +2,17 @@ html, body {
     height: 100%;
 }
 body {
-	background-color: #fefefe;
+	background: #fff;
 	margin: 0;
 	font-family: arial, sans-serif;
     position: relative;
 }
 .page {
+    background: inherit;
+    border-bottom: 1px solid #ccc;
     position: relative;
     z-index: 12;
-    padding: 2em;
+    padding: 1em;
 }
 #viewport {
     display: block;

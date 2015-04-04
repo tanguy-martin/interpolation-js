@@ -14,24 +14,39 @@ define('interpolation', function() {
         this.points = [];
 
         var getPoint = function(x, x1, x2, y1, y2) {
-            y = y1 + (x - x1) * ((y2 - y1) / (x2 - x1));
-            return y;
-        };
+            return y1 + (x - x1) * ((y2 - y1) / (x2 - x1));;
+        }, x, y;
 
         if (x1 < x2) {
-            for (var x = x1; x <= x2; x+= step) {
+            for (x = x1; x <= x2; x+= step) {
 
                 this.points.push({
                     x: x,
                     y: getPoint(x, x1, x2, y1, y2)
                 });
             }
-        } else {
-            for (var x = x1; x >= x2; x-= step) {
+        } else if (x1 > x2) {
+            for (x = x1; x >= x2; x-= step) {
 
                 this.points.push({
                     x: x,
                     y: getPoint(x, x1, x2, y1, y2)
+                });
+            }
+        } else if (y1 < y2) {
+            for (y = y1; y <= y2; y+= step) {
+
+                this.points.push({
+                    x: getPoint(y, y1, y2, x1, x2),
+                    y: y
+                });
+            }
+        } else if (y1 > y2) {
+            for (y = y1; y >= y2; y-= step) {
+
+                this.points.push({
+                    x: getPoint(y, y1, y2, x1, x2),
+                    y: y
                 });
             }
         }

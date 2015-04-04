@@ -1,6 +1,6 @@
 define(
-    'app/main', 
-    ['point', 'interpolation'], 
+    'app/main',
+    ['point', 'interpolation'],
 
     function(Point, Interpolation) {
 
@@ -15,7 +15,7 @@ define(
         ctx.fillStyle = "#000000";
         ctx.lineCap = "round";
 
-        var points = [], 
+        var points = [],
             drawing = false,
             doInterpolate = false;
 
@@ -30,14 +30,23 @@ define(
             drawing = true;
         });
 
+        // draw on mouse move
         canvas.addEventListener('mousemove', function(e) {
             if (!drawing) {
                 return;
             }
 
+            // build the point where the mouse pointer is
             var p = new Point(e.clientX, e.clientY);
+            // draw the point
             p.draw(ctx);
 
+            // if the interpolation is toggled on
+            // we had the point created to our array and if we got 2 points
+            // in the array we do the interpolation between those 2 points, and
+            // draw the "interpolated" points.
+            // then we remove the first point added in the array so that
+            // we can continue with the latest point added the next time.
             if (doInterpolate) {
                 points.unshift(p);
 
@@ -52,6 +61,7 @@ define(
 
 
         var toggleInterpolationBtn = document.getElementById('toggleInterpolation');
+        
         // toggle the interpolation on/off when clicking the associated button
         toggleInterpolationBtn.addEventListener('click', function(e) {
             doInterpolate = !doInterpolate;
