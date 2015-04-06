@@ -1,17 +1,26 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8" />
-	<title>Linear interpolation</title>
+	<title>Linear/Quadratic interpolation</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script data-main="js/app" src="js/lib/require.min.js"></script>
 </head>
 <body>
     <canvas id="viewport" width="1200" height="800"></canvas>
-    <div class="page">
-        <h1>Playing with linear interpolation</h1>
+    <form class="page">
+        <h1>Playing with linear/quadratic interpolation</h1>
         <label for="toggleInterpolation">Toggle interpolation: </label>
-        <button id="toggleInterpolation" class="btn">Interpolation OFF</button>
-        <p>Now draw (click & drag).</p>
-    </div>
+        <button type="button" id="toggleInterpolation" name="toggleInterpolation" class="btn">Interpolation ON</button>
+        <label for="interpolationType">Choose interpolation: </label>
+        <select id="interpolationType" name="interpolationType">
+            <option value="linear" label="Linear (2 points)">Linear (2 points)</option>
+            <option value="quadratic" label="Quadratic (3 points)">Quadratic (3 points)</option>
+        </select>
+        <label for="mode">Mode: </label>
+        <select id="mode" name="interpolationType">
+            <option value="points" label="Points (click)">Points (click)</option>
+            <option value="lines" label="Lines (click & drag)">Lines (click & drag)</option>
+        </select>
+    </form>
 </body>
 

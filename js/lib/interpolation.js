@@ -1,9 +1,17 @@
 define('interpolation', function() {
-    function Interpolation(p1, p2) {
+    function Interpolation(p1, p2, p3) {
         this.p1 = p1;
         this.p2 = p2;
+
+        p3 && (this.p3 = p3);
     }
 
+    /**
+     * Given 2 points (stored in the current object),
+     * do an linear interpolation between them
+     *
+     * @return {void}
+     */
     Interpolation.prototype.interpolateLinear = function() {
         var x1 = this.p1.x,
             x2 = this.p2.x,
@@ -53,10 +61,68 @@ define('interpolation', function() {
 
     };
 
+    /**
+     * Given 3 points, do a interpolation between them. This is basic and
+     * will always go from the minimum x to the maximum x (or min y to max y
+     * if the x coordinates are equals).
+     *
+     * @return {void}
+     */
+    Interpolation.prototype.interpolateQuadratic = function() {
+        var x1 = this.p1.x,
+            x2 = this.p2.x,
+            x3 = this.p3.x,
+            y1 = this.p1.y,
+            y2 = this.p2.y,
+            y3 = this.p3.y,
+            step = 1;
+
+        this.points = [];
+
+        // this method returns the y coordinate given x coordinate and
+        // the other 3 points coordinates.
+        // @todo generalise this function to work with a polynamial function
+        // of n degree
+        var getPoint = function(x, x1, x2, x3, y1, y2, y3) {
+            return y1 * ((x - x2) * (x - x3)) / ((x1 - x2) * (x1 - x3))
+                 + y2 * ((x - x3) * (x - x1)) / ((x2 - x3) * (x2 - x1))
+                 + y3 * ((x - x1) * (x - x2)) / ((x3 - x1) * (x3 - x2));
+        }, x, y;
+
+        var xMin = Math.min(x1, x2, x3),
+            xMax = Math.max(x1, x2, x3),
+            yMin = Math.min(y1, y2, y3),
+            yMax = Math.max(y1, y2, y3);
+
+        if (xMax != xMin) {
+            for (x = xMin; x < xMax; x+= step) {
+                this.points.push({
+                    x: x,
+                    y: getPoint(x, x1, x2, x3, y1, y2, y3)
+                });
+            }
+        } else if (yMax != yMin) {
+            for (y = yMin; y < yMax; y+= step) {
+                this.points.push({
+                    x: getPoint(y, y1, y2, y3, x1, x2, x3),
+                    y: x
+                });
+            }
+        }
+
+    };
+
+    /**
+     * Draw a point into the given Canvas context
+     *
+     * @param  {[type]} ctx [description]
+     * @return {[type]}     [description]
+     */
     Interpolation.prototype.draw = function(ctx) {
         if (!this.points.length) {
             return;
         }
+        console.log('hi');
 
         ctx.beginPath();
 

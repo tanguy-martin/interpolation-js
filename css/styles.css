@@ -9,10 +9,13 @@ body {
 }
 .page {
     background: inherit;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #bbb;
     position: relative;
     z-index: 12;
-    padding: 1em;
+    padding: 1em 1em 1em;
+}
+.page h1 {
+    margin-top: 0;
 }
 #viewport {
     display: block;
@@ -21,7 +24,7 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    background: #fcfcfc;
+    background: #fafafa;
     z-index: 10;
     cursor: default;
 }
