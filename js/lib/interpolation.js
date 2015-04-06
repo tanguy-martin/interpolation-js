@@ -8,7 +8,11 @@ define('interpolation', function() {
 
     /**
      * Given 2 points (stored in the current object),
-     * do an linear interpolation between them
+     * do an linear interpolation between them. This is purely
+     * a theorical exemple put in practice because we could have
+     * just used the canvas lineTo() method between the points drawn
+     * to effectively draw the affine function between those 2 points (
+     * this method does exactly that, but little step by little step)
      *
      * @return {void}
      */
@@ -122,7 +126,6 @@ define('interpolation', function() {
         if (!this.points.length) {
             return;
         }
-        console.log('hi');
 
         ctx.beginPath();
 

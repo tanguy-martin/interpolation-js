@@ -2,8 +2,8 @@ define('point', function() {
     function Point(x, y, radius) {
         this.x = x;
         this.y = y;
-        // default radius is 1
-        this.radius = radius || 1;
+        // default radius is 3
+        this.radius = radius || 3;
     }
 
     Point.prototype.draw = function(ctx) {
