@@ -99,14 +99,14 @@ define('interpolation', function() {
             yMax = Math.max(y1, y2, y3);
 
         if (xMax != xMin) {
-            for (x = xMin; x < xMax; x+= step) {
+            for (x = xMin; x <= xMax; x+= step) {
                 this.points.push({
                     x: x,
                     y: getPoint(x, x1, x2, x3, y1, y2, y3)
                 });
             }
         } else if (yMax != yMin) {
-            for (y = yMin; y < yMax; y+= step) {
+            for (y = yMin; y <= yMax; y+= step) {
                 this.points.push({
                     x: getPoint(y, y1, y2, y3, x1, x2, x3),
                     y: x
